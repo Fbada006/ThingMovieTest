@@ -5,6 +5,7 @@ plugins {
     id(BuildPlugins.kotlinParcelizePlugin)
     id(BuildPlugins.ktlintPlugin)
     id(BuildPlugins.jacocoAndroid)
+    id(BuildPlugins.daggerHilt)
 }
 
 jacoco {
@@ -81,10 +82,17 @@ android {
         // Paging 3 lib
         implementation(Libraries.paging3ktx)
 
+        // Hilt
+        implementation(Libraries.daggerHilt)
+        kapt(Libraries.daggerHiltCompiler)
+
         androidTestImplementation(TestLibraries.testRunner)
         androidTestImplementation(TestLibraries.espresso)
         androidTestImplementation(TestLibraries.annotation)
 
         testImplementation(TestLibraries.junit4)
     }
+}
+kapt {
+    correctErrorTypes = true
 }

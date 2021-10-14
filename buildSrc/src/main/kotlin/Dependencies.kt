@@ -23,6 +23,9 @@ object Versions {
     //Room
     const val room = "2.3.0"
 
+    // Hilt
+    const val daggerHilt = "2.38.1"
+
     //Version codes for all the test libraries
     const val junit4 = "4.13.2"
     const val testRunner = "1.4.0"
@@ -51,6 +54,7 @@ object BuildPlugins {
     const val gradleVersionsPlugin = "com.github.ben-manes.versions"
     const val jacocoAndroid = "com.hiya.jacoco-android"
     const val kapt = "kotlin-kapt"
+    const val daggerHilt = "dagger.hilt.android.plugin"
 }
 
 object Libraries {
@@ -74,6 +78,8 @@ object Libraries {
     const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
     const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
     const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+    const val daggerHilt = "com.google.dagger:hilt-android:${Versions.daggerHilt}"
+    const val daggerHiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.daggerHilt}"
 }
 
 object TestLibraries {
