@@ -11,7 +11,6 @@ import com.thingthing.thatthing.databinding.FragmentShowsBinding
 import com.thingthing.thatthing.ui.TmdbViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import timber.log.Timber
 
 @AndroidEntryPoint
 class ShowsFragment : Fragment() {
@@ -38,7 +37,7 @@ class ShowsFragment : Fragment() {
     private fun fetchShows() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             viewmodel.getAllShows().collectLatest {
-                Timber.d("Data from the api $it")
+                showAdapter.submitData(it)
             }
         }
     }

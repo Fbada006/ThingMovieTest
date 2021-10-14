@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.*
+
 plugins {
     id(BuildPlugins.androidApplication)
     id(BuildPlugins.kotlinAndroid)
@@ -7,7 +10,6 @@ plugins {
     id(BuildPlugins.jacocoAndroid)
     id(BuildPlugins.daggerHilt)
     id(BuildPlugins.safeArgs)
-    id("kotlin-android")
 }
 
 jacoco {
@@ -46,7 +48,13 @@ android {
         jvmTarget = "1.8"
     }
 
+    val localProperties = Properties()
+    localProperties.load(FileInputStream(rootProject.file("local.properties")))
+
     buildTypes {
+        getByName("debug") {
+            buildConfigField("String", "API_KEY", "\"" + localProperties["TMDB_KEY"] + "\"")
+        }
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
@@ -96,7 +104,7 @@ android {
 
         // Coil
         implementation(Libraries.coil)
-        
+
         // sdp
         implementation(Libraries.sdp)
 
