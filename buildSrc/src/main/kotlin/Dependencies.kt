@@ -12,7 +12,7 @@ object Versions {
     const val okhttp3loggingInterceptor = "4.8.1"
 
     // Paging
-    const val paging3Library = "3.1.0-beta01"
+    const val paging3Library = "3.0.1"
 
     //ViewModel and LifeCycle
     const val viewmodelLifecycle = "2.2.0"
@@ -34,6 +34,13 @@ object Versions {
     const val testRunner = "1.4.0"
     const val espresso = "3.4.0"
     const val annotation = "1.3.0-alpha01"
+
+    // Coroutine adapter
+    const val coroutineAdapter = "0.9.2"
+
+    // Activity and fragment ktx
+    const val activityKtx = "1.3.1"
+    const val fragmentKtx = "1.3.6"
 
     // Gradle Plugins
     const val ktlint = "10.1.0"
@@ -68,7 +75,7 @@ object Libraries {
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val ktxCore = "androidx.core:core-ktx:${Versions.ktx}"
     const val materialComponents = "com.google.android.material:material:${Versions.material}"
-    const val retrofit = "com.squareup.retrofit2:retrofit${Versions.retrofit}"
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     const val okhttp3 = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp3loggingInterceptor}"
     const val paging3ktx = "androidx.paging:paging-runtime-ktx:${Versions.paging3Library}"
@@ -84,6 +91,9 @@ object Libraries {
     const val daggerHilt = "com.google.dagger:hilt-android:${Versions.daggerHilt}"
     const val daggerHiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.daggerHilt}"
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+    const val retrofitCoroutineAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${Versions.coroutineAdapter}"
+    const val activityKtx = "androidx.activity:activity-ktx:${Versions.activityKtx}"
+    const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragmentKtx}"
 }
 
 object TestLibraries {

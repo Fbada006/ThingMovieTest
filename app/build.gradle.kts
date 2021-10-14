@@ -58,11 +58,14 @@ android {
         implementation(Libraries.ktxCore)
         implementation(Libraries.constraintLayout)
         implementation(Libraries.materialComponents)
+        implementation(Libraries.activityKtx)
+        implementation(Libraries.fragmentKtx)
 
         // Retrofit
         implementation(Libraries.retrofit)
         implementation(Libraries.retrofitGsonConverter)
         implementation(Libraries.okhttp3)
+        implementation(Libraries.retrofitCoroutineAdapter)
 
         // Viewmodel and lifecycle
         implementation(Libraries.lifecycleExtensions)
