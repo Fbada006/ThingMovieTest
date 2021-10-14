@@ -21,7 +21,8 @@ class ShowsFragment : Fragment() {
     private val showAdapter = TvShowAdapter()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentShowsBinding.inflate(inflater)
@@ -45,6 +46,10 @@ class ShowsFragment : Fragment() {
     private fun setUpViews() {
         binding.rvShows.apply {
             adapter = showAdapter
+            adapter = showAdapter.withLoadStateHeaderAndFooter(
+                header = ShowLoadingAdapter { showAdapter.retry() },
+                footer = ShowLoadingAdapter { showAdapter.retry() }
+            )
         }
     }
 
