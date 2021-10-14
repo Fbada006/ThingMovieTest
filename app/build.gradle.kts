@@ -82,6 +82,9 @@ android {
         // Paging 3 lib
         implementation(Libraries.paging3ktx)
 
+        // Timber
+        implementation(Libraries.timber)
+
         // Hilt
         implementation(Libraries.daggerHilt)
         kapt(Libraries.daggerHiltCompiler)

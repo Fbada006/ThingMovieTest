@@ -26,6 +26,9 @@ object Versions {
     // Hilt
     const val daggerHilt = "2.38.1"
 
+    // Timber
+    const val timber = "5.0.1"
+
     //Version codes for all the test libraries
     const val junit4 = "4.13.2"
     const val testRunner = "1.4.0"
@@ -80,6 +83,7 @@ object Libraries {
     const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
     const val daggerHilt = "com.google.dagger:hilt-android:${Versions.daggerHilt}"
     const val daggerHiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.daggerHilt}"
+    const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 }
 
 object TestLibraries {
