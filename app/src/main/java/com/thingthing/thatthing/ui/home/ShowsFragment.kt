@@ -5,12 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.thingthing.thatthing.databinding.FragmentShowsBinding
+import com.thingthing.thatthing.ui.TmdbViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import timber.log.Timber
 
 @AndroidEntryPoint
 class ShowsFragment : Fragment() {
 
+    private val viewmodel by viewModels<TmdbViewModel>()
     private var _binding: FragmentShowsBinding? = null
     private val binding get() = _binding!!
     private val showAdapter = TvShowAdapter()
@@ -30,7 +36,11 @@ class ShowsFragment : Fragment() {
     }
 
     private fun fetchShows() {
-
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewmodel.getAllShows().collectLatest {
+                Timber.d("Data from the api $it")
+            }
+        }
     }
 
     private fun setUpViews() {
