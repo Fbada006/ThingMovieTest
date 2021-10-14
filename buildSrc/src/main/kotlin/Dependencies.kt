@@ -7,6 +7,22 @@ object Versions {
     const val ktx = "1.7.0-alpha01"
     const val material = "1.5.0-alpha02"
 
+    // Retrofit
+    const val retrofit = "2.9.0"
+    const val okhttp3loggingInterceptor = "4.8.1"
+
+    // Paging
+    const val paging3Library = "3.1.0-beta01"
+
+    //ViewModel and LifeCycle
+    const val viewmodelLifecycle = "2.2.0"
+
+    //Coroutines
+    const val coroutines = "1.3.9"
+
+    //Room
+    const val room = "2.3.0"
+
     //Version codes for all the test libraries
     const val junit4 = "4.13.2"
     const val testRunner = "1.4.0"
@@ -34,6 +50,7 @@ object BuildPlugins {
     const val kotlinParcelizePlugin = "org.jetbrains.kotlin.plugin.parcelize"
     const val gradleVersionsPlugin = "com.github.ben-manes.versions"
     const val jacocoAndroid = "com.hiya.jacoco-android"
+    const val kapt = "kotlin-kapt"
 }
 
 object Libraries {
@@ -44,6 +61,19 @@ object Libraries {
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val ktxCore = "androidx.core:core-ktx:${Versions.ktx}"
     const val materialComponents = "com.google.android.material:material:${Versions.material}"
+    const val retrofit = "com.squareup.retrofit2:retrofit${Versions.retrofit}"
+    const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    const val okhttp3 = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp3loggingInterceptor}"
+    const val paging3ktx = "androidx.paging:paging-runtime-ktx:${Versions.paging3Library}"
+    const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.viewmodelLifecycle}"
+    const val lifecycleViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.viewmodelLifecycle}"
+    const val lifecycleLiveDataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.viewmodelLifecycle}"
+    const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.viewmodelLifecycle}"
+    const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+    const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
+    const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
+    const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
+    const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
 }
 
 object TestLibraries {
