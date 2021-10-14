@@ -42,6 +42,9 @@ object Versions {
     const val activityKtx = "1.3.1"
     const val fragmentKtx = "1.3.6"
 
+    // Navigation component
+    const val navigation = "2.3.5"
+
     // Gradle Plugins
     const val ktlint = "10.1.0"
     const val detekt = "1.18.0"
@@ -65,6 +68,7 @@ object BuildPlugins {
     const val jacocoAndroid = "com.hiya.jacoco-android"
     const val kapt = "kotlin-kapt"
     const val daggerHilt = "dagger.hilt.android.plugin"
+    const val safeArgs = "androidx.navigation.safeargs.kotlin"
 }
 
 object Libraries {
@@ -94,6 +98,8 @@ object Libraries {
     const val retrofitCoroutineAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${Versions.coroutineAdapter}"
     const val activityKtx = "androidx.activity:activity-ktx:${Versions.activityKtx}"
     const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragmentKtx}"
+    const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+    const val navigationKtx = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
 }
 
 object TestLibraries {
@@ -103,7 +109,6 @@ object TestLibraries {
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     const val annotation = "androidx.annotation:annotation:${Versions.annotation}"
 }
-
 
 object AndroidSdk {
     const val minSdkVersion = 21

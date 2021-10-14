@@ -6,6 +6,7 @@ plugins {
     id(BuildPlugins.ktlintPlugin)
     id(BuildPlugins.jacocoAndroid)
     id(BuildPlugins.daggerHilt)
+    id(BuildPlugins.safeArgs)
 }
 
 jacoco {
@@ -91,6 +92,10 @@ android {
         // Hilt
         implementation(Libraries.daggerHilt)
         kapt(Libraries.daggerHiltCompiler)
+
+        //Navigation
+        implementation(Libraries.navigationFragment)
+        kapt(Libraries.navigationKtx)
 
         androidTestImplementation(TestLibraries.testRunner)
         androidTestImplementation(TestLibraries.espresso)

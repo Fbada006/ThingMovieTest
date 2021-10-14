@@ -34,11 +34,13 @@ buildscript {
     val kotlinVersion by extra("1.5.21")
     val jacocoVersion by extra("0.2")
     val daggerHilt by extra("2.38.1")
+    val navVersion by extra("2.3.5")
 
     dependencies {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
         classpath("com.hiya:jacoco-android:$jacocoVersion")
         classpath("com.google.dagger:hilt-android-gradle-plugin:$daggerHilt")
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$navVersion")
     }
 }
 
