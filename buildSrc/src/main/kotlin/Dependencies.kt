@@ -7,11 +7,40 @@ object Versions {
     const val ktx = "1.7.0-alpha01"
     const val material = "1.5.0-alpha02"
 
+    // Retrofit
+    const val retrofit = "2.9.0"
+    const val okhttp3loggingInterceptor = "4.8.1"
+
+    // Paging
+    const val paging3Library = "3.0.1"
+
+    //ViewModel and LifeCycle
+    const val viewmodelLifecycle = "2.2.0"
+
+    //Coroutines
+    const val coroutines = "1.3.9"
+
+    //Room
+    const val room = "2.3.0"
+
+    // Hilt
+    const val daggerHilt = "2.38.1"
+
+    // Timber
+    const val timber = "5.0.1"
+
     //Version codes for all the test libraries
     const val junit4 = "4.13.2"
     const val testRunner = "1.4.0"
     const val espresso = "3.4.0"
     const val annotation = "1.3.0-alpha01"
+
+    // Coroutine adapter
+    const val coroutineAdapter = "0.9.2"
+
+    // Activity and fragment ktx
+    const val activityKtx = "1.3.1"
+    const val fragmentKtx = "1.3.6"
 
     // Gradle Plugins
     const val ktlint = "10.1.0"
@@ -34,6 +63,8 @@ object BuildPlugins {
     const val kotlinParcelizePlugin = "org.jetbrains.kotlin.plugin.parcelize"
     const val gradleVersionsPlugin = "com.github.ben-manes.versions"
     const val jacocoAndroid = "com.hiya.jacoco-android"
+    const val kapt = "kotlin-kapt"
+    const val daggerHilt = "dagger.hilt.android.plugin"
 }
 
 object Libraries {
@@ -44,6 +75,25 @@ object Libraries {
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val ktxCore = "androidx.core:core-ktx:${Versions.ktx}"
     const val materialComponents = "com.google.android.material:material:${Versions.material}"
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    const val okhttp3 = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp3loggingInterceptor}"
+    const val paging3ktx = "androidx.paging:paging-runtime-ktx:${Versions.paging3Library}"
+    const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.viewmodelLifecycle}"
+    const val lifecycleViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.viewmodelLifecycle}"
+    const val lifecycleLiveDataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.viewmodelLifecycle}"
+    const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.viewmodelLifecycle}"
+    const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+    const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
+    const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
+    const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
+    const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+    const val daggerHilt = "com.google.dagger:hilt-android:${Versions.daggerHilt}"
+    const val daggerHiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.daggerHilt}"
+    const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+    const val retrofitCoroutineAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${Versions.coroutineAdapter}"
+    const val activityKtx = "androidx.activity:activity-ktx:${Versions.activityKtx}"
+    const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragmentKtx}"
 }
 
 object TestLibraries {

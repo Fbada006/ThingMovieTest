@@ -1,9 +1,11 @@
 plugins {
     id(BuildPlugins.androidApplication)
     id(BuildPlugins.kotlinAndroid)
+    id(BuildPlugins.kapt)
     id(BuildPlugins.kotlinParcelizePlugin)
     id(BuildPlugins.ktlintPlugin)
     id(BuildPlugins.jacocoAndroid)
+    id(BuildPlugins.daggerHilt)
 }
 
 jacoco {
@@ -56,6 +58,39 @@ android {
         implementation(Libraries.ktxCore)
         implementation(Libraries.constraintLayout)
         implementation(Libraries.materialComponents)
+        implementation(Libraries.activityKtx)
+        implementation(Libraries.fragmentKtx)
+
+        // Retrofit
+        implementation(Libraries.retrofit)
+        implementation(Libraries.retrofitGsonConverter)
+        implementation(Libraries.okhttp3)
+        implementation(Libraries.retrofitCoroutineAdapter)
+
+        // Viewmodel and lifecycle
+        implementation(Libraries.lifecycleExtensions)
+        implementation(Libraries.lifecycleLiveDataKtx)
+        implementation(Libraries.lifecycleRuntimeKtx)
+        implementation(Libraries.lifecycleViewModelKtx)
+
+        // Coroutines
+        implementation(Libraries.coroutinesAndroid)
+        implementation(Libraries.coroutinesCore)
+
+        // Room
+        implementation(Libraries.roomKtx)
+        implementation(Libraries.roomRuntime)
+        kapt(Libraries.roomCompiler)
+
+        // Paging 3 lib
+        implementation(Libraries.paging3ktx)
+
+        // Timber
+        implementation(Libraries.timber)
+
+        // Hilt
+        implementation(Libraries.daggerHilt)
+        kapt(Libraries.daggerHiltCompiler)
 
         androidTestImplementation(TestLibraries.testRunner)
         androidTestImplementation(TestLibraries.espresso)
@@ -63,4 +98,7 @@ android {
 
         testImplementation(TestLibraries.junit4)
     }
+}
+kapt {
+    correctErrorTypes = true
 }

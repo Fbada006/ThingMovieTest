@@ -16,12 +16,30 @@
 package com.thingthing.thatthing
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.thingthing.thatthing.ui.TmdbViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import timber.log.Timber
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+    private val viewmodel by viewModels<TmdbViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        observeVm()
+    }
+
+    private fun observeVm() {
+        lifecycleScope.launchWhenStarted {
+            viewmodel.getAllShows().collectLatest {
+                Timber.d("Data from the api $it")
+            }
+        }
     }
 }
