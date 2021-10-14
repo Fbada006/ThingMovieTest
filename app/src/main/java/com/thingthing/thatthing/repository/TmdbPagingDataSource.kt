@@ -31,6 +31,8 @@ class TmdbPagingDataSource @Inject constructor(private val tmdbService: TmdbServ
 
     override fun getRefreshKey(state: PagingState<Int, TvShow>): Int? = state.anchorPosition
 
+    override val keyReuseSupported: Boolean = true
+
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, TvShow> {
         return try {
             val showResponse = tmdbService.getTvShows(page = currentPage!!).body()
