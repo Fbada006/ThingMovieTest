@@ -45,6 +45,12 @@ object Versions {
     // Navigation component
     const val navigation = "2.3.5"
 
+    // sdp
+    const val sdp = "1.0.6"
+
+    // Coil
+    const val coil = "1.4.0"
+
     // Gradle Plugins
     const val ktlint = "10.1.0"
     const val detekt = "1.18.0"
@@ -100,6 +106,8 @@ object Libraries {
     const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragmentKtx}"
     const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     const val navigationKtx = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+    const val sdp = "com.intuit.sdp:sdp-android:${Versions.sdp}"
+    const val coil = "io.coil-kt:coil:${Versions.coil}"
 }
 
 object TestLibraries {

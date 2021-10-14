@@ -7,6 +7,7 @@ plugins {
     id(BuildPlugins.jacocoAndroid)
     id(BuildPlugins.daggerHilt)
     id(BuildPlugins.safeArgs)
+    id("kotlin-android")
 }
 
 jacoco {
@@ -93,6 +94,12 @@ android {
         implementation(Libraries.daggerHilt)
         kapt(Libraries.daggerHiltCompiler)
 
+        // Coil
+        implementation(Libraries.coil)
+        
+        // sdp
+        implementation(Libraries.sdp)
+
         //Navigation
         implementation(Libraries.navigationFragment)
         kapt(Libraries.navigationKtx)
@@ -103,6 +110,9 @@ android {
 
         testImplementation(TestLibraries.junit4)
     }
+}
+dependencies {
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
 }
 kapt {
     correctErrorTypes = true
