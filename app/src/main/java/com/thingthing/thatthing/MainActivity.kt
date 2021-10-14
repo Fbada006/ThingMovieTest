@@ -3,10 +3,6 @@ package com.thingthing.thatthing
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
-/**
- *  Main Activity which is the Launcher Activity
- */
-
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
