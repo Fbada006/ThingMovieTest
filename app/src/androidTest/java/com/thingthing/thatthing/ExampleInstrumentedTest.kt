@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 GradleBuildPlugins
+ * Copyright 2020 ThingThing
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ke.co.appslab.gradleplugins
+package com.thingthing.thatthing
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
@@ -32,6 +32,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("ke.co.appslab.gradleplugins", appContext.packageName)
+        assertEquals("com.appslab.gradleplugins", appContext.packageName)
     }
 }

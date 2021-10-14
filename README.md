@@ -1,12 +1,6 @@
-# GradleBuildPlugins
+# ThatThing
 
-👀 Sample project that shows you how to configure plugins. After generating the project from this template, remember that you need to customize detekt rules and spotless plugin, if needed:
-
-- If you need to customize detekt rules, edit the detekt.yml on your root directory
-
-- Inside the spotless folder, on your root directory - add your license file
-
-- Remember to refactor the package name :rocket:
+Sample application for the Senior Android Developer position at ThingThing
 
 ### Prerequisites
 
@@ -37,3 +31,4 @@ Refer to this [issue](https://github.com/gradle/gradle/issues/10248), if you get
         * [Gradle Versions](https://github.com/ben-manes/gradle-versions-plugin) - provides a task to determine which dependencies have updates. Additionally, the plugin checks for updates to Gradle itself.
         
 For reference, here's a detailed explanation of the approach of the plugin configuration in this project - [A Day with an Elephant in the Room: Configuring Gradle Plugins.](https://medium.com/@harunwangereka/a-day-with-an-elephant-in-the-room-configuring-gradle-plugins-3331b0be64c7)
+This project was adopted from [this](https://github.com/wangerekaharun/GradleBuildPlugins) handy template
