@@ -25,7 +25,7 @@ import javax.inject.Inject
 class ShowRepositoryImpl @Inject constructor(private val tmdbPagingDataSource: TmdbPagingDataSource) : ShowRepository {
 
     private val pagingConfig = PagingConfig(
-        pageSize = 40,
+        pageSize = 20,
         enablePlaceholders = false,
     )
 
