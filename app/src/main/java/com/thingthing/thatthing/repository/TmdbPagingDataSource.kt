@@ -27,7 +27,7 @@ import javax.inject.Inject
 class TmdbPagingDataSource @Inject constructor(private val tmdbService: TmdbService) :
     PagingSource<Int, TvShow>() {
 
-    private var currentPage: Int? = 1
+    private var currentPage: Int = 1
 
     override fun getRefreshKey(state: PagingState<Int, TvShow>): Int? = state.anchorPosition
 
@@ -35,13 +35,11 @@ class TmdbPagingDataSource @Inject constructor(private val tmdbService: TmdbServ
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, TvShow> {
         return try {
-            val showResponse = tmdbService.getTvShows(page = currentPage!!).body()
-            Timber.d("I am loading----- $showResponse")
-            currentPage = showResponse?.page
+            val showResponse = tmdbService.getTvShows(page = currentPage).body()
             LoadResult.Page(
                 showResponse?.tvShows ?: listOf(),
                 null,
-                currentPage?.plus(1)
+                currentPage++
             )
         } catch (exception: IOException) {
             return LoadResult.Error(exception)
