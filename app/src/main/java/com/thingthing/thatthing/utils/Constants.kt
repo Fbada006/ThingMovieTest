@@ -15,7 +15,10 @@
  */
 package com.thingthing.thatthing.utils
 
+import com.thingthing.thatthing.BuildConfig
+
 const val TMDB_BASE_URL = "https://api.themoviedb.org/3/"
 const val API_CONNECT_TIMEOUT = 300L
 const val API_READ_TIMEOUT = 300L
 const val IMAGE_BASE = "https://image.tmdb.org/t/p/w500"
+const val API_KEY = BuildConfig.API_KEY
