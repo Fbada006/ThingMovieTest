@@ -20,6 +20,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.thingthing.thatthing.R
 import com.thingthing.thatthing.databinding.TvShowRowBinding
 import com.thingthing.thatthing.model.TvShow
 import com.thingthing.thatthing.utils.TvShowDiffUtilCallBack
@@ -40,7 +41,9 @@ class TvShowAdapter : PagingDataAdapter<TvShow, TvShowAdapter.TvShowViewHolder>(
         fun bind(tvShow: TvShow) {
             binding.showName.text = tvShow.name
             binding.showRating.text = tvShow.vote_average.toString()
-            binding.showPoster.load("https://image.tmdb.org/t/p/w500${tvShow.poster_path}")
+            binding.showPoster.load("https://image.tmdb.org/t/p/w500${tvShow.poster_path}") {
+                placeholder(R.drawable.loading_animation)
+            }
         }
     }
 }
