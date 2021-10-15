@@ -28,7 +28,6 @@ import com.thingthing.thatthing.ui.TmdbViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
-
 @AndroidEntryPoint
 class ShowsFragment : Fragment() {
 
