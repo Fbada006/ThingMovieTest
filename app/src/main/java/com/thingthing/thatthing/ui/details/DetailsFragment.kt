@@ -22,10 +22,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import coil.load
+import com.thingthing.thatthing.R
 import com.thingthing.thatthing.databinding.FragmentDetailsBinding
 import com.thingthing.thatthing.ui.TmdbViewModel
+import com.thingthing.thatthing.utils.IMAGE_BASE
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class DetailsFragment : Fragment() {
@@ -46,7 +48,18 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Timber.e("Received show from click is ${args.tvShow}")
+        populateDetails()
+    }
+
+    private fun populateDetails() {
+        binding.layoutSimilarShow.apply {
+            val tvShow = args.tvShow
+            showName.text = tvShow.name
+            showRating.text = tvShow.vote_average.toString()
+            showPoster.load("$IMAGE_BASE${tvShow.poster_path}") {
+                placeholder(R.drawable.loading_animation)
+            }
+        }
     }
 
     override fun onDestroyView() {
