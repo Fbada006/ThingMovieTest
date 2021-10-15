@@ -49,7 +49,9 @@ android {
     }
 
     val localProperties = Properties()
-    localProperties.load(FileInputStream(rootProject.file("local.properties")))
+    if (project.rootProject.file("local.properties").exists()) {
+        localProperties.load(FileInputStream(rootProject.file("local.properties")))
+    }
 
     buildTypes {
         getByName("debug") {
