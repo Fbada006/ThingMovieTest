@@ -13,15 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.thingthing.thatthing.model
+package com.thingthing.thatthing.utils
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
+import com.thingthing.thatthing.model.TvShow
 
-@Parcelize
-data class TvShow(
-    val id: Long,
-    val name: String,
-    val poster_path: String,
-    val vote_average: Double,
-) : Parcelable
+/**The click listener for the RV passing the clicked [TvShow] in a lambda*/
+class OnTvShowClickListener(val clickListener: (show: TvShow?) -> Unit) {
+    fun onClick(show: TvShow?) = clickListener(show)
+}

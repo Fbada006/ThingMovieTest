@@ -21,13 +21,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.thingthing.thatthing.databinding.FragmentDetailsBinding
 import com.thingthing.thatthing.ui.TmdbViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class DetailsFragment : Fragment() {
 
+    private val args by navArgs<DetailsFragmentArgs>()
     private val viewmodel by viewModels<TmdbViewModel>()
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
@@ -39,6 +42,11 @@ class DetailsFragment : Fragment() {
     ): View {
         _binding = FragmentDetailsBinding.inflate(inflater)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Timber.e("Received show from click is ${args.tvShow}")
     }
 
     override fun onDestroyView() {

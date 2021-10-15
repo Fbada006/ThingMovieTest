@@ -20,5 +20,9 @@
         android:id="@+id/detailsFragment"
         android:name="com.thingthing.thatthing.ui.details.DetailsFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_details" />
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="tvShow"
+            app:argType="com.thingthing.thatthing.model.TvShow" />
+    </fragment>
 </navigation>

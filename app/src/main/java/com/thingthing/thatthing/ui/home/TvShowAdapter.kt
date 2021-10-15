@@ -23,9 +23,11 @@ import coil.load
 import com.thingthing.thatthing.R
 import com.thingthing.thatthing.databinding.TvShowRowBinding
 import com.thingthing.thatthing.model.TvShow
+import com.thingthing.thatthing.utils.OnTvShowClickListener
 import com.thingthing.thatthing.utils.TvShowDiffUtilCallBack
 
-class TvShowAdapter : PagingDataAdapter<TvShow, TvShowAdapter.TvShowViewHolder>(TvShowDiffUtilCallBack()) {
+class TvShowAdapter(private val onTvShowClickListener: OnTvShowClickListener) :
+    PagingDataAdapter<TvShow, TvShowAdapter.TvShowViewHolder>(TvShowDiffUtilCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TvShowViewHolder {
         val binding = TvShowRowBinding.inflate(LayoutInflater.from(parent.context))
@@ -33,7 +35,11 @@ class TvShowAdapter : PagingDataAdapter<TvShow, TvShowAdapter.TvShowViewHolder>(
     }
 
     override fun onBindViewHolder(holder: TvShowViewHolder, position: Int) {
-        getItem(position)?.let { holder.bind(it) }
+        val show = getItem(position)
+        holder.itemView.setOnClickListener {
+            onTvShowClickListener.onClick(show)
+        }
+        show?.let { holder.bind(it) }
     }
 
     class TvShowViewHolder(private val binding: TvShowRowBinding) : RecyclerView.ViewHolder(binding.root) {

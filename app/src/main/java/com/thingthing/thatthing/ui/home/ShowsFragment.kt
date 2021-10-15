@@ -22,9 +22,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.thingthing.thatthing.databinding.FragmentShowsBinding
 import com.thingthing.thatthing.ui.TmdbViewModel
+import com.thingthing.thatthing.utils.OnTvShowClickListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
@@ -34,7 +36,11 @@ class ShowsFragment : Fragment() {
     private val viewmodel by viewModels<TmdbViewModel>()
     private var _binding: FragmentShowsBinding? = null
     private val binding get() = _binding!!
-    private val showAdapter = TvShowAdapter()
+    private val showAdapter = TvShowAdapter(
+        OnTvShowClickListener { show ->
+            viewmodel.displayShowDetails(show)
+        }
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,6 +55,19 @@ class ShowsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setUpViews()
         fetchShows()
+        collectClickEvents()
+    }
+
+    private fun collectClickEvents() {
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewmodel.event.collectLatest { event ->
+                event.getContentIfNotHandled()?.let { show ->
+                    findNavController().navigate(
+                        ShowsFragmentDirections.actionShowsFragmentToDetailsFragment(show)
+                    )
+                }
+            }
+        }
     }
 
     private fun fetchShows() {
