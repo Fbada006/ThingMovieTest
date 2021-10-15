@@ -25,7 +25,7 @@ class TvShowAdapter : PagingDataAdapter<TvShow, TvShowAdapter.TvShowViewHolder>(
         fun bind(tvShow: TvShow) {
             binding.showName.text = tvShow.name
             binding.showRating.text = tvShow.vote_average.toString()
-            binding.showPoster.load("http://image.tmdb.org/t/p/w500${tvShow.poster_path}")
+            binding.showPoster.load("https://image.tmdb.org/t/p/w500${tvShow.poster_path}")
         }
     }
 }
