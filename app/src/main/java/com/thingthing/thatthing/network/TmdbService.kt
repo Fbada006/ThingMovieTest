@@ -15,7 +15,6 @@
  */
 package com.thingthing.thatthing.network
 
-import com.thingthing.thatthing.BuildConfig
 import com.thingthing.thatthing.model.ShowResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -26,6 +25,6 @@ interface TmdbService {
     @GET("tv/top_rated")
     suspend fun getTvShows(
         @Query("page") page: Int = 1,
-        @Query("api_key") apiKey: String = BuildConfig.API_KEY
+        @Query("api_key") apiKey: String = "API_KEY"
     ): Response<ShowResponse>
 }
