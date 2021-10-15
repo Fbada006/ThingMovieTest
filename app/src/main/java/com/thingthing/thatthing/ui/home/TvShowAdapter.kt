@@ -23,6 +23,7 @@ import coil.load
 import com.thingthing.thatthing.R
 import com.thingthing.thatthing.databinding.TvShowRowBinding
 import com.thingthing.thatthing.model.TvShow
+import com.thingthing.thatthing.utils.IMAGE_BASE
 import com.thingthing.thatthing.utils.OnTvShowClickListener
 import com.thingthing.thatthing.utils.TvShowDiffUtilCallBack
 
@@ -47,7 +48,7 @@ class TvShowAdapter(private val onTvShowClickListener: OnTvShowClickListener) :
         fun bind(tvShow: TvShow) {
             binding.showName.text = tvShow.name
             binding.showRating.text = tvShow.vote_average.toString()
-            binding.showPoster.load("https://image.tmdb.org/t/p/w500${tvShow.poster_path}") {
+            binding.showPoster.load("${IMAGE_BASE}${tvShow.poster_path}") {
                 placeholder(R.drawable.loading_animation)
             }
         }
