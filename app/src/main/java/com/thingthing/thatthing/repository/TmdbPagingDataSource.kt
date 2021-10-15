@@ -20,7 +20,6 @@ import androidx.paging.PagingState
 import com.thingthing.thatthing.model.TvShow
 import com.thingthing.thatthing.network.TmdbService
 import retrofit2.HttpException
-import timber.log.Timber
 import java.io.IOException
 import javax.inject.Inject
 
