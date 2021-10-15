@@ -25,6 +25,6 @@ interface TmdbService {
     @GET("tv/top_rated")
     suspend fun getTvShows(
         @Query("page") page: Int = 1,
-        @Query("apiKey") apiKey: String = "9ed751698b8b5963444886c285a5afb1"
+        @Query("api_key") apiKey: String = "API_KEY"
     ): Response<ShowResponse>
 }

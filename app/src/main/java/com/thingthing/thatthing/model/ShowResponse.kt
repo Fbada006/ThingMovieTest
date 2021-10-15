@@ -15,9 +15,10 @@
  */
 package com.thingthing.thatthing.model
 
+import com.google.gson.annotations.SerializedName
+
 data class ShowResponse(
     val page: Int,
-    val tvShows: List<TvShow>,
-    val total_pages: Int,
-    val total_results: Int
+    @SerializedName("results")
+    val tvShows: List<TvShow>
 )

@@ -1,3 +1,5 @@
 <resources>
-  <string name="app_name">ThatThing</string>
+    <string name="app_name">ThatThing</string>
+    <string name="content_desc_show_image">Show image</string>
+    <string name="text_retry">Retry</string>
 </resources>

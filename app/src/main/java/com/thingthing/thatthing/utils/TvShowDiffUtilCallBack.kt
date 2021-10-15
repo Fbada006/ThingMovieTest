@@ -13,22 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.thingthing.thatthing.repository
+package com.thingthing.thatthing.utils
 
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
+import androidx.recyclerview.widget.DiffUtil
 import com.thingthing.thatthing.model.TvShow
-import kotlinx.coroutines.flow.Flow
-import javax.inject.Inject
 
-class ShowRepositoryImpl @Inject constructor(private val tmdbPagingDataSource: TmdbPagingDataSource) : ShowRepository {
+class TvShowDiffUtilCallBack : DiffUtil.ItemCallback<TvShow>() {
+    override fun areItemsTheSame(oldItem: TvShow, newItem: TvShow): Boolean = oldItem.id == newItem.id
 
-    private val pagingConfig = PagingConfig(
-        pageSize = 20,
-        enablePlaceholders = false,
-    )
-
-    override fun getTvShows(): Flow<PagingData<TvShow>> =
-        Pager(config = pagingConfig) { tmdbPagingDataSource }.flow
+    override fun areContentsTheSame(oldItem: TvShow, newItem: TvShow): Boolean {
+        return oldItem.id == newItem.id &&
+            oldItem.name == newItem.name
+    }
 }

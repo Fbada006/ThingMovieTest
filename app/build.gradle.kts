@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.*
+
 plugins {
     id(BuildPlugins.androidApplication)
     id(BuildPlugins.kotlinAndroid)
@@ -6,6 +9,7 @@ plugins {
     id(BuildPlugins.ktlintPlugin)
     id(BuildPlugins.jacocoAndroid)
     id(BuildPlugins.daggerHilt)
+    id(BuildPlugins.safeArgs)
 }
 
 jacoco {
@@ -44,7 +48,15 @@ android {
         jvmTarget = "1.8"
     }
 
+    val localProperties = Properties()
+    if (project.rootProject.file("local.properties").exists()) {
+        localProperties.load(FileInputStream(rootProject.file("local.properties")))
+    }
+
     buildTypes {
+        getByName("debug") {
+            buildConfigField("String", "API_KEY", "\"" + localProperties["TMDB_KEY"] + "\"")
+        }
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
@@ -92,12 +104,25 @@ android {
         implementation(Libraries.daggerHilt)
         kapt(Libraries.daggerHiltCompiler)
 
+        // Coil
+        implementation(Libraries.coil)
+
+        // sdp
+        implementation(Libraries.sdp)
+
+        // Navigation
+        implementation(Libraries.navigationFragment)
+        kapt(Libraries.navigationKtx)
+
         androidTestImplementation(TestLibraries.testRunner)
         androidTestImplementation(TestLibraries.espresso)
         androidTestImplementation(TestLibraries.annotation)
 
         testImplementation(TestLibraries.junit4)
     }
+}
+dependencies {
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
 }
 kapt {
     correctErrorTypes = true
