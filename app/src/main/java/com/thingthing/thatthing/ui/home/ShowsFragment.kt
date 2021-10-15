@@ -22,10 +22,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.thingthing.thatthing.databinding.FragmentShowsBinding
 import com.thingthing.thatthing.ui.TmdbViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+
 
 @AndroidEntryPoint
 class ShowsFragment : Fragment() {
@@ -60,6 +62,12 @@ class ShowsFragment : Fragment() {
 
     private fun setUpViews() {
         binding.rvShows.apply {
+            addItemDecoration(
+                DividerItemDecoration(
+                    context,
+                    DividerItemDecoration.VERTICAL
+                )
+            )
             adapter = showAdapter
             adapter = showAdapter.withLoadStateHeaderAndFooter(
                 header = ShowLoadingAdapter { showAdapter.retry() },
