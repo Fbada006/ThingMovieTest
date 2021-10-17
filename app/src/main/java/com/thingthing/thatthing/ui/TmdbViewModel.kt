@@ -35,6 +35,9 @@ class TmdbViewModel @Inject constructor(private val repository: ShowRepository) 
 
     fun getAllShows() = repository.getTvShows().cachedIn(viewModelScope)
 
+    fun getSimilartvShows(id: Int) =
+        repository.getSimilarTvShows(id)
+
     fun displayShowDetails(show: TvShow?) {
         viewModelScope.launch {
             _event.emit(Event(show))
