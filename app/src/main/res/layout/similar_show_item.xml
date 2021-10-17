@@ -19,19 +19,24 @@
         android:id="@+id/showName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/showRating"
+        android:layout_above="@id/showOverview"
+        android:layout_alignStart="@id/showPoster"
+        android:layout_alignEnd="@id/showPoster"
         android:ellipsize="end"
         android:gravity="center"
         android:maxLines="1"
+        android:textStyle="bold"
         tools:text="Movie Name" />
 
     <TextView
-        android:id="@+id/showRating"
-        android:layout_width="match_parent"
+        android:id="@+id/showOverview"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@id/showName"
+        android:layout_alignEnd="@id/showName"
         android:layout_alignParentBottom="true"
         android:ellipsize="end"
         android:gravity="center"
-        android:maxLines="1"
-        tools:text="8.4" />
+        android:maxLines="3"
+        tools:text="Some long placeholder text goes here" />
 </RelativeLayout>

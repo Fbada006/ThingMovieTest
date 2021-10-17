@@ -27,7 +27,7 @@ class SimilarTvShowAdapter :
 
         fun bind(tvShow: TvShow) {
             binding.showName.text = tvShow.name
-            binding.showRating.text = tvShow.vote_average.toString()
+            binding.showOverview.text = tvShow.overview
             binding.showPoster.load("$IMAGE_BASE${tvShow.poster_path}") {
                 placeholder(R.drawable.loading_animation)
             }
