@@ -9,7 +9,7 @@
 
     <ImageView
         android:id="@+id/showPoster"
-        android:layout_width="@dimen/_300sdp"
+        android:layout_width="@dimen/_280sdp"
         android:layout_height="0dp"
         android:contentDescription="@string/content_desc_show_image"
         app:layout_constraintBottom_toTopOf="@id/showName"
