@@ -20,6 +20,7 @@ import androidx.paging.PagingState
 import com.thingthing.thatthing.model.TvShow
 import com.thingthing.thatthing.network.TmdbService
 import retrofit2.HttpException
+import timber.log.Timber
 import java.io.IOException
 import javax.inject.Inject
 
@@ -41,10 +42,13 @@ class TmdbPagingDataSource @Inject constructor(private val tmdbService: TmdbServ
                 currentPage++
             )
         } catch (exception: IOException) {
+            Timber.e("IO Exception similar $exception")
             return LoadResult.Error(exception)
         } catch (exception: HttpException) {
+            Timber.e("HttpException Exception similar $exception")
             return LoadResult.Error(exception)
         } catch (exception: Exception) {
+            Timber.e("General Exception similar $exception")
             return LoadResult.Error(exception)
         }
     }
