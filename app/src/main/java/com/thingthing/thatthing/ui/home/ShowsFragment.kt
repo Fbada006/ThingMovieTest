@@ -72,8 +72,8 @@ class ShowsFragment : Fragment() {
 
     private fun fetchShows() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewmodel.getAllShows().collectLatest {
-                showAdapter.submitData(it)
+            viewmodel.getAllShows().collectLatest { data ->
+                showAdapter.submitData(data)
             }
         }
     }

@@ -23,15 +23,16 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.DividerItemDecoration
 import coil.load
 import com.thingthing.thatthing.R
 import com.thingthing.thatthing.databinding.FragmentDetailsBinding
 import com.thingthing.thatthing.model.TvShow
 import com.thingthing.thatthing.ui.TmdbViewModel
+import com.thingthing.thatthing.ui.home.ShowLoadingAdapter
 import com.thingthing.thatthing.utils.IMAGE_BASE
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import timber.log.Timber
 
 @AndroidEntryPoint
 class DetailsFragment : Fragment() {
@@ -41,6 +42,7 @@ class DetailsFragment : Fragment() {
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
     private lateinit var tvShow: TvShow
+    private val similarTvShowAdapter = SimilarTvShowAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,14 +56,15 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tvShow = args.tvShow
+        setUpViews()
         populateDetails()
         observeSimilarShows()
     }
 
     private fun observeSimilarShows() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewmodel.getSimilartvShows(tvShow.id.toInt()).collectLatest {
-                Timber.e("Similar shows data ------ $it")
+            viewmodel.getSimilartvShows(tvShow.id.toInt()).collectLatest { data ->
+                similarTvShowAdapter.submitData(data)
             }
         }
     }
@@ -73,6 +76,22 @@ class DetailsFragment : Fragment() {
             showPoster.load("$IMAGE_BASE${tvShow.poster_path}") {
                 placeholder(R.drawable.loading_animation)
             }
+        }
+    }
+
+    private fun setUpViews() {
+        binding.rvSimilarShows.apply {
+            addItemDecoration(
+                DividerItemDecoration(
+                    context,
+                    DividerItemDecoration.VERTICAL
+                )
+            )
+            adapter = similarTvShowAdapter
+            adapter = similarTvShowAdapter.withLoadStateHeaderAndFooter(
+                header = ShowLoadingAdapter { similarTvShowAdapter.retry() },
+                footer = ShowLoadingAdapter { similarTvShowAdapter.retry() }
+            )
         }
     }
 
