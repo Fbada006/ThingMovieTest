@@ -50,9 +50,6 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        // Allows NavigationUI to support proper up navigation or the drawer layout
-        // drawer menu, depending on the situation
-        return navController.navigateUp(appBarConfiguration)
-    }
+    override fun onSupportNavigateUp(): Boolean =
+        navController.navigateUp(appBarConfiguration)
 }
