@@ -17,6 +17,7 @@ package com.thingthing.thatthing.repository
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.thingthing.thatthing.model.ShowResponse
 import com.thingthing.thatthing.model.TvShow
 import com.thingthing.thatthing.network.TmdbService
 import retrofit2.HttpException
@@ -25,7 +26,7 @@ import java.io.IOException
 
 class SimilarTmdbPagingDataSource(
     private val tmdbService: TmdbService,
-    private val tvId: Int
+    private val tvShow: TvShow
 ) :
     PagingSource<Int, TvShow>() {
 
@@ -39,10 +40,10 @@ class SimilarTmdbPagingDataSource(
         return try {
             val showResponse = tmdbService.getSimilarTvShows(
                 page = currentPage,
-                tvId = tvId
+                tvId = tvShow.id.toInt()
             ).body()
             LoadResult.Page(
-                showResponse?.tvShows ?: listOf(),
+                setData(showResponse),
                 null,
                 currentPage++
             )
@@ -56,5 +57,14 @@ class SimilarTmdbPagingDataSource(
             Timber.e("General Exception similar $exception")
             return LoadResult.Error(exception)
         }
+    }
+
+    private fun setData(showResponse: ShowResponse?): List<TvShow> {
+        val tvShows = mutableListOf(tvShow)
+        val shows = showResponse?.tvShows?.toMutableList()
+        if (!shows.isNullOrEmpty()) {
+            tvShows.addAll(shows)
+        }
+        return tvShows
     }
 }
