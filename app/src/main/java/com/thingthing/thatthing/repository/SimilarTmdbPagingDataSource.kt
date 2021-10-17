@@ -65,6 +65,10 @@ class SimilarTmdbPagingDataSource(
         if (!shows.isNullOrEmpty()) {
             tvShows.addAll(shows)
         }
-        return tvShows
+        return tvShows.distinctBy {
+            // Get back only unique items. Some similar items list has the clicked item at first
+            // which woulc create a duplicate on the first item that needs to be removed
+            it.id
+        }
     }
 }
