@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
@@ -10,37 +9,31 @@
     <ImageView
         android:id="@+id/showPoster"
         android:layout_width="@dimen/_280sdp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/showName"
+        android:layout_alignParentTop="true"
         android:contentDescription="@string/content_desc_show_image"
-        app:layout_constraintBottom_toTopOf="@id/showName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/showName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@id/showRating"
         android:layout_marginStart="@dimen/_12sdp"
         android:ellipsize="end"
         android:gravity="center"
         android:maxLines="1"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        app:layout_constraintBottom_toTopOf="@id/showRating"
-        app:layout_constraintEnd_toEndOf="@id/showPoster"
-        app:layout_constraintStart_toStartOf="@id/showPoster"
         tools:text="Movie Name" />
 
     <TextView
         android:id="@+id/showRating"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/showName"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/_12sdp"
         android:ellipsize="end"
         android:gravity="center"
         android:maxLines="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/showPoster"
-        app:layout_constraintStart_toStartOf="@id/showPoster"
         tools:text="8.4" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
