@@ -72,6 +72,7 @@ android {
         implementation(Libraries.materialComponents)
         implementation(Libraries.activityKtx)
         implementation(Libraries.fragmentKtx)
+        implementation(Libraries.legacySupport)
 
         // Retrofit
         implementation(Libraries.retrofit)
@@ -112,6 +113,7 @@ android {
 
         // Navigation
         implementation(Libraries.navigationFragment)
+        implementation(Libraries.navigationUIKtx)
         kapt(Libraries.navigationKtx)
 
         androidTestImplementation(TestLibraries.testRunner)
@@ -121,9 +123,7 @@ android {
         testImplementation(TestLibraries.junit4)
     }
 }
-dependencies {
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-}
+
 kapt {
     correctErrorTypes = true
 }

@@ -3,9 +3,10 @@ object Versions {
     //Version codes for all the libraries
     const val kotlin = "1.5.21"
     const val appCompat = "1.4.0-alpha03"
-    const val constraintLayout = "2.1.0"
+    const val constraintLayout = "2.1.1"
     const val ktx = "1.7.0-alpha01"
     const val material = "1.5.0-alpha02"
+    const val legacySupport = "1.0.0"
 
     // Retrofit
     const val retrofit = "2.9.0"
@@ -44,6 +45,7 @@ object Versions {
 
     // Navigation component
     const val navigation = "2.3.5"
+    const val navUi = "2.3.5"
 
     // sdp
     const val sdp = "1.0.6"
@@ -108,6 +110,8 @@ object Libraries {
     const val navigationKtx = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
     const val sdp = "com.intuit.sdp:sdp-android:${Versions.sdp}"
     const val coil = "io.coil-kt:coil:${Versions.coil}"
+    const val legacySupport = "androidx.legacy:legacy-support-v4:${Versions.legacySupport}"
+    const val navigationUIKtx = "androidx.navigation:navigation-ui-ktx:${Versions.navUi}"
 }
 
 object TestLibraries {
