@@ -31,8 +31,8 @@ interface TmdbService {
 
     @GET("tv/{tv_id}/similar")
     suspend fun getSimilarTvShows(
-        @Query("page") page: Int = 1,
         @Path("tv_id") tvId: Int = 1,
+        @Query("page") page: Int = 1,
         @Query("api_key") apiKey: String = API_KEY
     ): Response<ShowResponse>
 }
