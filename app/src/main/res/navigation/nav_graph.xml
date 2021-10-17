@@ -7,7 +7,8 @@
 
     <fragment
         android:id="@+id/showsFragment"
-        android:name="com.thingthing.thatthing.ui.home.ShowsFragment">
+        android:name="com.thingthing.thatthing.ui.home.ShowsFragment"
+        android:label="@string/app_name">
         <action
             android:id="@+id/action_showsFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
