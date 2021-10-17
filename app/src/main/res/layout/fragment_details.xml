@@ -1,35 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginStart="@dimen/_8sdp">
 
-    <HorizontalScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSimilarShows"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/_8sdp">
-
-            <include
-                android:id="@+id/layout_similar_show"
-                layout="@layout/similar_show_item" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvSimilarShows"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_margin="@dimen/_8sdp"
-                android:scrollbars="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/layout_similar_show"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:listitem="@layout/similar_show_item" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </HorizontalScrollView>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        android:layout_margin="@dimen/_8sdp"
+        android:nestedScrollingEnabled="false"
+        android:scrollbars="horizontal"
+        tools:itemCount="12"
+        tools:listitem="@layout/similar_show_item" />
+</RelativeLayout>
