@@ -24,6 +24,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import com.thingthing.thatthing.R
 import com.thingthing.thatthing.databinding.FragmentDetailsBinding
@@ -80,13 +81,15 @@ class DetailsFragment : Fragment() {
     }
 
     private fun setUpViews() {
+        val similarLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.rvSimilarShows.apply {
             addItemDecoration(
                 DividerItemDecoration(
                     context,
-                    DividerItemDecoration.VERTICAL
+                    DividerItemDecoration.HORIZONTAL
                 )
             )
+            layoutManager = similarLayoutManager
             adapter = similarTvShowAdapter
             adapter = similarTvShowAdapter.withLoadStateHeaderAndFooter(
                 header = ShowLoadingAdapter { similarTvShowAdapter.retry() },
