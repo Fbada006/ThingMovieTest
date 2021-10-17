@@ -22,4 +22,5 @@ import kotlinx.coroutines.flow.Flow
 interface ShowRepository {
 
     fun getTvShows(): Flow<PagingData<TvShow>>
+    fun getSimilarTvShows(tvId: Int): Flow<PagingData<TvShow>>
 }
