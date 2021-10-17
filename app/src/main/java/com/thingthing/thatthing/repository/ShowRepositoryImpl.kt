@@ -36,6 +36,6 @@ class ShowRepositoryImpl @Inject constructor(
     override fun getTvShows(): Flow<PagingData<TvShow>> =
         Pager(config = pagingConfig) { tmdbPagingDataSource }.flow
 
-    override fun getSimilarTvShows(tvId: Int): Flow<PagingData<TvShow>> =
-        Pager(config = pagingConfig) { SimilarTmdbPagingDataSource(tmdbService, tvId) }.flow
+    override fun getSimilarTvShows(tvShow: TvShow): Flow<PagingData<TvShow>> =
+        Pager(config = pagingConfig) { SimilarTmdbPagingDataSource(tmdbService, tvShow) }.flow
 }

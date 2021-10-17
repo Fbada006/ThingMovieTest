@@ -25,13 +25,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import coil.load
-import com.thingthing.thatthing.R
 import com.thingthing.thatthing.databinding.FragmentDetailsBinding
 import com.thingthing.thatthing.model.TvShow
 import com.thingthing.thatthing.ui.TmdbViewModel
 import com.thingthing.thatthing.ui.home.ShowLoadingAdapter
-import com.thingthing.thatthing.utils.IMAGE_BASE
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
@@ -58,24 +55,13 @@ class DetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         tvShow = args.tvShow
         setUpViews()
-        populateDetails()
         observeSimilarShows()
     }
 
     private fun observeSimilarShows() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewmodel.getSimilartvShows(tvShow.id.toInt()).collectLatest { data ->
+            viewmodel.getSimilartvShows(tvShow).collectLatest { data ->
                 similarTvShowAdapter.submitData(data)
-            }
-        }
-    }
-
-    private fun populateDetails() {
-        binding.layoutSimilarShow.apply {
-            showName.text = tvShow.name
-            showRating.text = tvShow.vote_average.toString()
-            showPoster.load("$IMAGE_BASE${tvShow.poster_path}") {
-                placeholder(R.drawable.loading_animation)
             }
         }
     }
