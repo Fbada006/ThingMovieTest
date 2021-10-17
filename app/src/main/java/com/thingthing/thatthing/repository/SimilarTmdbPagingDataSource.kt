@@ -41,7 +41,6 @@ class SimilarTmdbPagingDataSource(
                 page = currentPage,
                 tvId = tvId
             ).body()
-            Timber.e("Similar shows response is $showResponse")
             LoadResult.Page(
                 showResponse?.tvShows ?: listOf(),
                 null,
