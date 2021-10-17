@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.thingthing.thatthing.ui.home
+package com.thingthing.thatthing.ui.details
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -22,74 +22,64 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
-import com.thingthing.thatthing.databinding.FragmentShowsBinding
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.thingthing.thatthing.databinding.FragmentDetailsBinding
+import com.thingthing.thatthing.model.TvShow
 import com.thingthing.thatthing.ui.TmdbViewModel
-import com.thingthing.thatthing.utils.OnTvShowClickListener
+import com.thingthing.thatthing.ui.home.ShowLoadingAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
-class ShowsFragment : Fragment() {
+class DetailsFragment : Fragment() {
 
+    private val args by navArgs<DetailsFragmentArgs>()
     private val viewmodel by viewModels<TmdbViewModel>()
-    private var _binding: FragmentShowsBinding? = null
+    private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
-    private val showAdapter = TvShowAdapter(
-        OnTvShowClickListener { show ->
-            viewmodel.displayShowDetails(show)
-        }
-    )
+    private lateinit var tvShow: TvShow
+    private val similarTvShowAdapter = SimilarTvShowAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentShowsBinding.inflate(inflater)
+        _binding = FragmentDetailsBinding.inflate(inflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        tvShow = args.tvShow
         setUpViews()
-        fetchShows()
-        collectClickEvents()
+        observeSimilarShows()
     }
 
-    private fun collectClickEvents() {
+    private fun observeSimilarShows() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewmodel.event.collectLatest { event ->
-                event.getContentIfNotHandled()?.let { show ->
-                    findNavController().navigate(
-                        ShowsFragmentDirections.actionShowsFragmentToDetailsFragment(show)
-                    )
-                }
-            }
-        }
-    }
-
-    private fun fetchShows() {
-        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewmodel.getAllShows().collectLatest { data ->
-                showAdapter.submitData(data)
+            viewmodel.getSimilartvShows(tvShow).collectLatest { data ->
+                similarTvShowAdapter.submitData(data)
             }
         }
     }
 
     private fun setUpViews() {
-        binding.rvShows.apply {
+        val similarLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvSimilarShows.apply {
             addItemDecoration(
                 DividerItemDecoration(
                     context,
-                    DividerItemDecoration.VERTICAL
+                    DividerItemDecoration.HORIZONTAL
                 )
             )
-            adapter = showAdapter
-            adapter = showAdapter.withLoadStateHeaderAndFooter(
-                header = ShowLoadingAdapter { showAdapter.retry() },
-                footer = ShowLoadingAdapter { showAdapter.retry() }
+            layoutManager = similarLayoutManager
+            adapter = similarTvShowAdapter
+            adapter = similarTvShowAdapter.withLoadStateHeaderAndFooter(
+                header = ShowLoadingAdapter { similarTvShowAdapter.retry() },
+                footer = ShowLoadingAdapter { similarTvShowAdapter.retry() }
             )
         }
     }

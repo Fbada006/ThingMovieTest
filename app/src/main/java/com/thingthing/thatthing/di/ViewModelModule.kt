@@ -15,6 +15,7 @@
  */
 package com.thingthing.thatthing.di
 
+import com.thingthing.thatthing.network.TmdbService
 import com.thingthing.thatthing.repository.ShowRepository
 import com.thingthing.thatthing.repository.ShowRepositoryImpl
 import com.thingthing.thatthing.repository.TmdbPagingDataSource
@@ -30,6 +31,6 @@ class ViewModelModule {
 
     @Singleton
     @Provides
-    fun providesShowRepository(tmdbPagingDataSource: TmdbPagingDataSource): ShowRepository =
-        ShowRepositoryImpl(tmdbPagingDataSource)
+    fun providesShowRepository(tmdbPagingDataSource: TmdbPagingDataSource, tmdbService: TmdbService): ShowRepository =
+        ShowRepositoryImpl(tmdbPagingDataSource, tmdbService)
 }

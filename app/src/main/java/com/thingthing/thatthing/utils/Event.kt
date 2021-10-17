@@ -15,8 +15,22 @@
  */
 package com.thingthing.thatthing.utils
 
-const val TMDB_BASE_URL = "https://api.themoviedb.org/3/"
-const val API_CONNECT_TIMEOUT = 300L
-const val API_READ_TIMEOUT = 300L
-const val IMAGE_BASE = "https://image.tmdb.org/t/p/w500"
-const val API_KEY = "BuildConfig.API_KEY"
+/**
+ * Used as a wrapper for data that is exposed via a LiveData that represents an event.
+ */
+open class Event<out T>(private val content: T) {
+
+    private var hasBeenHandled = false
+
+    /**
+     * Returns the content and prevents its use again.
+     */
+    fun getContentIfNotHandled(): T? {
+        return if (hasBeenHandled) {
+            null
+        } else {
+            hasBeenHandled = true
+            content
+        }
+    }
+}

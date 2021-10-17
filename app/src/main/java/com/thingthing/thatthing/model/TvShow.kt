@@ -15,9 +15,14 @@
  */
 package com.thingthing.thatthing.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class TvShow(
     val id: Long,
     val name: String,
     val poster_path: String,
     val vote_average: Double,
-)
+    val overview: String
+) : Parcelable

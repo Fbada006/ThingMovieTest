@@ -19,10 +19,14 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.thingthing.thatthing.model.TvShow
+import com.thingthing.thatthing.network.TmdbService
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class ShowRepositoryImpl @Inject constructor(private val tmdbPagingDataSource: TmdbPagingDataSource) : ShowRepository {
+class ShowRepositoryImpl @Inject constructor(
+    private val tmdbPagingDataSource: TmdbPagingDataSource,
+    private val tmdbService: TmdbService
+) : ShowRepository {
 
     private val pagingConfig = PagingConfig(
         pageSize = 20,
@@ -31,4 +35,7 @@ class ShowRepositoryImpl @Inject constructor(private val tmdbPagingDataSource: T
 
     override fun getTvShows(): Flow<PagingData<TvShow>> =
         Pager(config = pagingConfig) { tmdbPagingDataSource }.flow
+
+    override fun getSimilarTvShows(tvShow: TvShow): Flow<PagingData<TvShow>> =
+        Pager(config = pagingConfig) { SimilarTmdbPagingDataSource(tmdbService, tvShow) }.flow
 }

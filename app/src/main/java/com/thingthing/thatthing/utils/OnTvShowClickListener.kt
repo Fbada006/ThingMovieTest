@@ -15,8 +15,9 @@
  */
 package com.thingthing.thatthing.utils
 
-const val TMDB_BASE_URL = "https://api.themoviedb.org/3/"
-const val API_CONNECT_TIMEOUT = 300L
-const val API_READ_TIMEOUT = 300L
-const val IMAGE_BASE = "https://image.tmdb.org/t/p/w500"
-const val API_KEY = "BuildConfig.API_KEY"
+import com.thingthing.thatthing.model.TvShow
+
+/**The click listener for the RV passing the clicked [TvShow] in a lambda*/
+class OnTvShowClickListener(val clickListener: (show: TvShow?) -> Unit) {
+    fun onClick(show: TvShow?) = clickListener(show)
+}
