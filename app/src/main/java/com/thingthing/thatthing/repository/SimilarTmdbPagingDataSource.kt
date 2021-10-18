@@ -34,17 +34,6 @@ class SimilarTmdbPagingDataSource(
 
     private var currentPage: Int = 1
 
-    // The refresh key is used for the initial load of the next PagingSource, after invalidation
-    override fun getRefreshKey(state: PagingState<Int, TvShow>): Int? {
-        // We need to get the previous key (or next key if previous is null) of the page
-        // that was closest to the most recently accessed index.
-        // Anchor position is the most recently accessed index
-        return state.anchorPosition?.let { anchorPosition ->
-            state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
-                ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
-        }
-    }
-
     override val keyReuseSupported: Boolean = true
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, TvShow> {
@@ -75,6 +64,17 @@ class SimilarTmdbPagingDataSource(
         } catch (exception: Exception) {
             Timber.e("General Exception similar $exception")
             return LoadResult.Error(exception)
+        }
+    }
+
+    // The refresh key is used for the initial load of the next PagingSource, after invalidation
+    override fun getRefreshKey(state: PagingState<Int, TvShow>): Int? {
+        // We need to get the previous key (or next key if previous is null) of the page
+        // that was closest to the most recently accessed index.
+        // Anchor position is the most recently accessed index
+        return state.anchorPosition?.let { anchorPosition ->
+            state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
+                ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
         }
     }
 
