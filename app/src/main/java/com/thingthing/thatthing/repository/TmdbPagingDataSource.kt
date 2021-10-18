@@ -19,6 +19,8 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.thingthing.thatthing.model.TvShow
 import com.thingthing.thatthing.network.TmdbService
+import com.thingthing.thatthing.utils.NETWORK_PAGE_SIZE
+import com.thingthing.thatthing.utils.TMDB_STARTING_PAGE_INDEX
 import retrofit2.HttpException
 import timber.log.Timber
 import java.io.IOException
@@ -35,11 +37,19 @@ class TmdbPagingDataSource @Inject constructor(private val tmdbService: TmdbServ
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, TvShow> {
         return try {
-            val showResponse = tmdbService.getTvShows(page = currentPage).body()
+            val position = params.key ?: currentPage
+            val showResponse = tmdbService.getTvShows(page = position).body()
+            val nextKey = if (showResponse?.tvShows.isNullOrEmpty()) {
+                null
+            } else {
+                // initial load size = 3 * NETWORK_PAGE_SIZE
+                // ensure we're not requesting duplicating items, at the 2nd request
+                position + (params.loadSize / NETWORK_PAGE_SIZE)
+            }
             LoadResult.Page(
                 showResponse?.tvShows ?: listOf(),
-                null,
-                currentPage++
+                prevKey = if (position == TMDB_STARTING_PAGE_INDEX) null else position - 1,
+                nextKey = nextKey
             )
         } catch (exception: IOException) {
             Timber.e("IO Exception similar $exception")
