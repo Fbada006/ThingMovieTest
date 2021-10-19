@@ -9,7 +9,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 
-class BaseTest {
+open class BaseTest {
 
     lateinit var tmdbService: TmdbService
     private lateinit var mockWebServer: MockWebServer
