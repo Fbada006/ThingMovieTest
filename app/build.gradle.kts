@@ -110,7 +110,6 @@ android {
 
         // sdp
         implementation(Libraries.sdp)
-        implementation(Libraries.guava)
 
         // Navigation
         implementation(Libraries.navigationFragment)
@@ -121,6 +120,7 @@ android {
         androidTestImplementation(TestLibraries.espresso)
         androidTestImplementation(TestLibraries.annotation)
 
+        testImplementation(TestLibraries.truth)
         testImplementation(TestLibraries.coretesting)
         testImplementation(TestLibraries.junit4)
         testImplementation(TestLibraries.mockk)

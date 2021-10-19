@@ -49,7 +49,7 @@ object Versions {
 
     // sdp
     const val sdp = "1.0.6"
-    const val guava = "31.0.1-android"
+    const val truth = "1.1.3"
 
     // Coil
     const val coil = "1.4.0"
@@ -115,7 +115,6 @@ object Libraries {
     const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     const val navigationKtx = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
     const val sdp = "com.intuit.sdp:sdp-android:${Versions.sdp}"
-    const val guava = "com.google.guava:guava:${Versions.guava}"
     const val coil = "io.coil-kt:coil:${Versions.coil}"
     const val legacySupport = "androidx.legacy:legacy-support-v4:${Versions.legacySupport}"
     const val navigationUIKtx = "androidx.navigation:navigation-ui-ktx:${Versions.navUi}"
@@ -130,6 +129,7 @@ object TestLibraries {
     const val mockk = "io.mockk:mockk:${Versions.mockk}"
     const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.mockwebserver}"
     const val coretesting = "androidx.arch.core:core-testing:${Versions.coretesting}"
+    const val truth = "com.google.truth:truth:${Versions.truth}"
 }
 
 object AndroidSdk {
