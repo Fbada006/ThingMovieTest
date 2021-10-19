@@ -20,6 +20,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.thingthing.thatthing.model.TvShow
 import com.thingthing.thatthing.network.TmdbService
+import com.thingthing.thatthing.utils.NETWORK_PAGE_SIZE
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -29,8 +30,8 @@ class ShowRepositoryImpl @Inject constructor(
 ) : ShowRepository {
 
     private val pagingConfig = PagingConfig(
-        pageSize = 20,
-        enablePlaceholders = false,
+        pageSize = NETWORK_PAGE_SIZE,
+        enablePlaceholders = false
     )
 
     override fun getTvShows(): Flow<PagingData<TvShow>> =
