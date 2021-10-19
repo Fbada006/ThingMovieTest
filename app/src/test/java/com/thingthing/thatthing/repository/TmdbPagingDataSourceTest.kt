@@ -26,7 +26,7 @@ import org.junit.Test
 class TmdbPagingDataSourceTest {
 
     @Test
-    fun myTest() = runBlocking {
+    fun `loading from data source returns correct data`() = runBlocking {
         val source = TmdbPagingDataSource(FakeTmdbService())
         Truth.assertThat(
             source.load(
