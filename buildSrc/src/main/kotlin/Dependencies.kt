@@ -49,6 +49,7 @@ object Versions {
 
     // sdp
     const val sdp = "1.0.6"
+    const val guava = "31.0.1-android"
 
     // Coil
     const val coil = "1.4.0"
@@ -56,6 +57,7 @@ object Versions {
     // Mockk
     const val mockk = "1.12.0"
     const val mockwebserver = "5.0.0-alpha.2"
+    const val coretesting = "2.1.0"
 
     // Gradle Plugins
     const val ktlint = "10.1.0"
@@ -113,6 +115,7 @@ object Libraries {
     const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     const val navigationKtx = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
     const val sdp = "com.intuit.sdp:sdp-android:${Versions.sdp}"
+    const val guava = "com.google.guava:guava:${Versions.guava}"
     const val coil = "io.coil-kt:coil:${Versions.coil}"
     const val legacySupport = "androidx.legacy:legacy-support-v4:${Versions.legacySupport}"
     const val navigationUIKtx = "androidx.navigation:navigation-ui-ktx:${Versions.navUi}"
@@ -126,6 +129,7 @@ object TestLibraries {
     const val annotation = "androidx.annotation:annotation:${Versions.annotation}"
     const val mockk = "io.mockk:mockk:${Versions.mockk}"
     const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.mockwebserver}"
+    const val coretesting = "androidx.arch.core:core-testing:${Versions.coretesting}"
 }
 
 object AndroidSdk {
