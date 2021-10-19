@@ -20,6 +20,7 @@ import androidx.paging.PagingState
 import com.thingthing.thatthing.model.TvShow
 import com.thingthing.thatthing.network.TmdbService
 import com.thingthing.thatthing.utils.NETWORK_PAGE_SIZE
+import com.thingthing.thatthing.utils.NETWORK_STARTING_PAGE
 import com.thingthing.thatthing.utils.TMDB_STARTING_PAGE_INDEX
 import retrofit2.HttpException
 import timber.log.Timber
@@ -29,13 +30,11 @@ import javax.inject.Inject
 class TmdbPagingDataSource @Inject constructor(private val tmdbService: TmdbService) :
     PagingSource<Int, TvShow>() {
 
-    private var currentPage: Int = 1
-
     override val keyReuseSupported: Boolean = true
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, TvShow> {
         return try {
-            val position = params.key ?: currentPage
+            val position = params.key ?: NETWORK_STARTING_PAGE
             val showResponse = tmdbService.getTvShows(page = position).body()
             val nextKey = if (showResponse?.tvShows.isNullOrEmpty()) {
                 null

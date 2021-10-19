@@ -21,4 +21,5 @@ const val API_READ_TIMEOUT = 300L
 const val IMAGE_BASE = "https://image.tmdb.org/t/p/w500"
 const val NETWORK_PAGE_SIZE = 50
 const val TMDB_STARTING_PAGE_INDEX = 1
+const val NETWORK_STARTING_PAGE = 1
 const val API_KEY = "BuildConfig.API_KEY"

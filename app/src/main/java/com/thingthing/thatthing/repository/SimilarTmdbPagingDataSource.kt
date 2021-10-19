@@ -21,6 +21,7 @@ import com.thingthing.thatthing.model.ShowResponse
 import com.thingthing.thatthing.model.TvShow
 import com.thingthing.thatthing.network.TmdbService
 import com.thingthing.thatthing.utils.NETWORK_PAGE_SIZE
+import com.thingthing.thatthing.utils.NETWORK_STARTING_PAGE
 import com.thingthing.thatthing.utils.TMDB_STARTING_PAGE_INDEX
 import retrofit2.HttpException
 import timber.log.Timber
@@ -32,15 +33,13 @@ class SimilarTmdbPagingDataSource(
 ) :
     PagingSource<Int, TvShow>() {
 
-    private var currentPage: Int = 1
-
     override val keyReuseSupported: Boolean = true
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, TvShow> {
         return try {
-            val position = params.key ?: currentPage
+            val position = params.key ?: NETWORK_STARTING_PAGE
             val showResponse = tmdbService.getSimilarTvShows(
-                page = currentPage,
+                page = position,
                 tvId = tvShow.id.toInt()
             ).body()
             val nextKey = if (showResponse?.tvShows.isNullOrEmpty()) {
