@@ -17,7 +17,6 @@ package com.thingthing.thatthing.repository
 
 import androidx.paging.PagingSource
 import com.google.common.truth.Truth
-import com.thingthing.thatthing.model.TvShow
 import com.thingthing.thatthing.utils.FakeTmdbService
 import com.thingthing.thatthing.utils.topShows
 import kotlinx.coroutines.runBlocking
