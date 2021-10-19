@@ -13,25 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.thingthing.thatthing.network
+package com.thingthing.thatthing.utils
 
 import com.thingthing.thatthing.model.ShowResponse
-import com.thingthing.thatthing.utils.API_KEY
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import com.thingthing.thatthing.network.TmdbService
 
-interface TmdbService {
-    @GET("tv/top_rated")
-    suspend fun getTvShows(
-        @Query("page") page: Int = 1,
-        @Query("api_key") apiKey: String = API_KEY
-    ): ShowResponse
+class FakeTmdbService : TmdbService {
 
-    @GET("tv/{tv_id}/similar")
-    suspend fun getSimilarTvShows(
-        @Path("tv_id") tvId: Int = 1,
-        @Query("page") page: Int = 1,
-        @Query("api_key") apiKey: String = API_KEY
-    ): ShowResponse
+    override suspend fun getTvShows(page: Int, apiKey: String): ShowResponse {
+        return ShowResponse(
+            page = 1, tvShows = topShows
+        )
+    }
+
+    override suspend fun getSimilarTvShows(tvId: Int, page: Int, apiKey: String): ShowResponse {
+        return ShowResponse(
+            page = 1, tvShows = similarShows
+        )
+    }
 }

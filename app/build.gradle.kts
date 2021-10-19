@@ -120,7 +120,11 @@ android {
         androidTestImplementation(TestLibraries.espresso)
         androidTestImplementation(TestLibraries.annotation)
 
+        testImplementation(TestLibraries.truth)
+        testImplementation(TestLibraries.coretesting)
         testImplementation(TestLibraries.junit4)
+        testImplementation(TestLibraries.mockk)
+        testImplementation(TestLibraries.mockWebServer)
     }
 }
 

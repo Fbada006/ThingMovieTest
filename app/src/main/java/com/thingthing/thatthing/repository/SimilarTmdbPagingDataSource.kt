@@ -41,8 +41,8 @@ class SimilarTmdbPagingDataSource(
             val showResponse = tmdbService.getSimilarTvShows(
                 page = position,
                 tvId = tvShow.id.toInt()
-            ).body()
-            val nextKey = if (showResponse?.tvShows.isNullOrEmpty()) {
+            )
+            val nextKey = if (showResponse.tvShows.isNullOrEmpty()) {
                 null
             } else {
                 // initial load size = 3 * NETWORK_PAGE_SIZE

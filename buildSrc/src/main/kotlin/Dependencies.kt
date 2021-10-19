@@ -49,9 +49,15 @@ object Versions {
 
     // sdp
     const val sdp = "1.0.6"
+    const val truth = "1.1.3"
 
     // Coil
     const val coil = "1.4.0"
+
+    // Mockk
+    const val mockk = "1.12.0"
+    const val mockwebserver = "5.0.0-alpha.2"
+    const val coretesting = "2.1.0"
 
     // Gradle Plugins
     const val ktlint = "10.1.0"
@@ -120,6 +126,10 @@ object TestLibraries {
     const val testRunner = "androidx.test:runner:${Versions.testRunner}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     const val annotation = "androidx.annotation:annotation:${Versions.annotation}"
+    const val mockk = "io.mockk:mockk:${Versions.mockk}"
+    const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.mockwebserver}"
+    const val coretesting = "androidx.arch.core:core-testing:${Versions.coretesting}"
+    const val truth = "com.google.truth:truth:${Versions.truth}"
 }
 
 object AndroidSdk {
