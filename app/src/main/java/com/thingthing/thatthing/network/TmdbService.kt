@@ -17,7 +17,6 @@ package com.thingthing.thatthing.network
 
 import com.thingthing.thatthing.model.ShowResponse
 import com.thingthing.thatthing.utils.API_KEY
-import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -27,12 +26,12 @@ interface TmdbService {
     suspend fun getTvShows(
         @Query("page") page: Int = 1,
         @Query("api_key") apiKey: String = API_KEY
-    ): Response<ShowResponse>
+    ): ShowResponse
 
     @GET("tv/{tv_id}/similar")
     suspend fun getSimilarTvShows(
         @Path("tv_id") tvId: Int = 1,
         @Query("page") page: Int = 1,
         @Query("api_key") apiKey: String = API_KEY
-    ): Response<ShowResponse>
+    ): ShowResponse
 }

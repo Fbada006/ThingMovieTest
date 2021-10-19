@@ -35,8 +35,8 @@ class TmdbPagingDataSource @Inject constructor(private val tmdbService: TmdbServ
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, TvShow> {
         return try {
             val position = params.key ?: NETWORK_STARTING_PAGE
-            val showResponse = tmdbService.getTvShows(page = position).body()
-            val nextKey = if (showResponse?.tvShows.isNullOrEmpty()) {
+            val showResponse = tmdbService.getTvShows(page = position)
+            val nextKey = if (showResponse.tvShows.isNullOrEmpty()) {
                 null
             } else {
                 // initial load size = 3 * NETWORK_PAGE_SIZE
@@ -44,7 +44,7 @@ class TmdbPagingDataSource @Inject constructor(private val tmdbService: TmdbServ
                 position + (params.loadSize / NETWORK_PAGE_SIZE)
             }
             LoadResult.Page(
-                showResponse?.tvShows ?: listOf(),
+                showResponse.tvShows,
                 prevKey = if (position == TMDB_STARTING_PAGE_INDEX) null else position - 1,
                 nextKey = nextKey
             )
