@@ -67,5 +67,5 @@ For reference, here's a detailed explanation of the approach of the plugin confi
 
 ## Known Issues
 
-    * Initial load does not show the loading indicator but shows on subsequent loads. This is an issue with the paging3 library
-        but there are workarounds alhough may be potentially time-intensive
+* Initial load does not show the loading indicator but shows on subsequent loads. This is an issue with the paging3 library but there are
+  workarounds alhough may be potentially time-intensive
