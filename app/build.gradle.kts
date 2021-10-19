@@ -120,7 +120,10 @@ android {
         androidTestImplementation(TestLibraries.espresso)
         androidTestImplementation(TestLibraries.annotation)
 
+        implementation("com.google.guava:guava:31.0.1-android")
         testImplementation(TestLibraries.junit4)
+        testImplementation(TestLibraries.mockk)
+        testImplementation(TestLibraries.mockWebServer)
     }
 }
 
