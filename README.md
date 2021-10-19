@@ -5,6 +5,9 @@ paging3 library for both top and similar shows.
 
 ### Prerequisites
 
+Make sure you update your copyright in the `copyright.kt` file in the `spotless` folder. All you have to add is add the year and company
+name
+
 Before every commit, make sure you run the following commands:
 
 ```shell script
@@ -17,6 +20,8 @@ work, try the following:
 ```shell script
 ./codeAnalysis.sh
 ```
+
+The above command will check for issues with both `detekt` and `ktlint` so that your build on the CI does not fail.
 
 To check for dependency updates, run the following command:
 
