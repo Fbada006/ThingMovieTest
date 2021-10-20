@@ -3,6 +3,12 @@
 Sample application for the Senior Android Developer position at ThingThing. The app gets data from the TMDB API and paginates it using the
 paging3 library for both top and similar shows.
 
+## API Key
+
+Once you are ready, navigate to the TMDB API [here](https://developers.themoviedb.org/3/getting-started/authentication) and get your own API
+Key then set it in your `local.properties` file. For convenience, just name it `TMDB_KEY` without any quotes. Example would be
+`TMDB_KEY = xxxxxxxxxxxxx`. After that, you are all set!
+
 ### Prerequisites
 
 Make sure you update your copyright in the `copyright.kt` file in the `spotless` folder. All you have to add is add the year and company
