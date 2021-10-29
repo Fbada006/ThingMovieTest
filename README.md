@@ -7,7 +7,8 @@ paging3 library for both top and similar shows.
 
 Once you are ready, navigate to the TMDB API [here](https://developers.themoviedb.org/3/getting-started/authentication) and get your own API
 Key then set it in your `local.properties` file. For convenience, just name it `TMDB_KEY` without any quotes. Example would be
-`TMDB_KEY = xxxxxxxxxxxxx`. After that, you are all set!
+`TMDB_KEY = xxxxxxxxxxxxx`. Reember to modify the `Constants.kt` file so that you get the KEY from the `BuildConfig`. Just remove the double
+quotes from the api key string and resolve the imports. After that, you are all set!
 
 ### Prerequisites
 
